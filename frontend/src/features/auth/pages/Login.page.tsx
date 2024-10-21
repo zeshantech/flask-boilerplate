@@ -14,7 +14,7 @@ export default function LoginPage() {
   };
 
   const style = {
-    backgroundImage: 'url("https://wallpapers.com/images/hd/tech-background-t29vt7psb6i6sgcy.jpg")', // Replace with your image URL
+    backgroundImage: 'url("https://wallpapers.com/images/hd/cyber-security-interface-skjqyncmzs3h1jcr.jpg")', // Replace with your image URL
     backgroundSize: "cover",
     backgroundPosition: "center",
     display: "flex",
