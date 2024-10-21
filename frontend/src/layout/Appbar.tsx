@@ -1,22 +1,18 @@
-import { AppBar, Toolbar, Typography, IconButton, Stack } from "@mui/material";
-import { useColorScheme } from "@mui/material/styles";
 import { Fragment } from "react";
+import { AppBar, Toolbar, Typography, IconButton, Stack } from "@mui/material";
 import { useGetUser } from "../features/home/hooks/query.hooks";
 import Button from "../components/Button";
 import { useAuth } from "../context/Auth.context";
 import { Outlet, useNavigate } from "react-router-dom";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useTheme } from "../context/Theme.context";
 
 export default function Appbar() {
-  const { setMode, mode } = useColorScheme();
+  const { isDarkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { handleOnLogout } = useAuth();
   const { data } = useGetUser();
-
-  const handleSetColorScheme = () => {
-    setMode(mode === "dark" ? "light" : "dark");
-  };
 
   const handleLogout = () => {
     handleOnLogout();
@@ -32,8 +28,8 @@ export default function Appbar() {
           </Typography>
 
           <Stack gap={2} direction={"row"}>
-            <IconButton onClick={handleSetColorScheme} color="inherit">
-              {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+            <IconButton onClick={toggleTheme} color="inherit">
+              {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
 
             <Button size="small" color="inherit" onClick={handleLogout}>
