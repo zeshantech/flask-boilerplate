@@ -1,4 +1,4 @@
-name: Deploy to AWS EC2
+name: Deploy to EC2
 
 on:
   push:
@@ -10,13 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - name: Checkout Code
+      uses: actions/checkout@v2
 
-    - name: Set up SSH SERVER
+    - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.EC2_KEY }}
+
+    - name: Create project directory on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} 'mkdir -p /home/ubuntu/flexlab'
 
     - name: Copy files to EC2
       run: |
