@@ -105,7 +105,7 @@ VITE_API_URL=http://localhost:5000/api
 
 ---
 
-## With Docker
+## 3. With Docker
 
 1. **Build and Run Containers**
 
