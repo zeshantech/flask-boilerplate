@@ -15,4 +15,5 @@ class Config:
     SMTP_USERNAME = os.getenv('SMTP_USERNAME', 'your_email@.com')
     SMTP_PASSWORD = os.getenv('SMTP_PASSWORD', 'ssss')
     REDIS_URI = os.getenv('REDIS_URI')
+    CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '*')
     OTP_EXPIRATION = int(os.getenv('OTP_EXPIRATION', 300))  # 5 minutes
