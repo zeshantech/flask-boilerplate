@@ -22,9 +22,9 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} 'mkdir -p /home/ubuntu/flexlab'
 
-    - name: Copy files to EC2
+    - name: Copy files to EC2 excluding virtual environment
       run: |
-        scp -r -o StrictHostKeyChecking=no ./* ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/flexlab
+        rsync -avz --exclude 'myenv' --exclude 'venv' --exclude '.git' . ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/flexlab
 
     - name: SSH into EC2 and run Docker Compose
       run: |
