@@ -6,7 +6,7 @@ console.log(apiUrl, "to run actions");
 
 
 export const API = axios.create({
-  baseURL: apiUrl ?? 'http://localhost:5000/api',
+  baseURL: apiUrl ?? 'http://35.156.73.243/api',
   headers: {
     "Content-Type": "application/json",
   },
