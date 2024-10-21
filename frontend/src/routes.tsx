@@ -15,6 +15,7 @@ function AuthenticatedRoutes() {
   return (
     <Routes>
       <Route element={[<Appbar />]}>
+        <Route path="/" Component={DashboardPage} />
         <Route path="/dashboard" Component={DashboardPage} />
         <Route path="*" Component={NotFoundPage} />
       </Route>
