@@ -43,8 +43,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   };
 
   const handleOnAuthenticate = (authToken: string = "") => {
-    console.log(authToken, "----------------------------------------");
-    
     setState({ ...defaultContextValue, authToken, isAuthenticated: true });
     handleOnSetItemInStorage("authToken", authToken!);
   };

@@ -13,11 +13,9 @@ export function useChangePassword() {
       return response.data;
     },
     onError: (error) => {
-      console.error("Change Password Error:", error.message);
       showSnackbar(error.message, "error");
     },
     onSuccess: (data) => {
-      console.log("Change Password Successful:", data.message);
       showSnackbar(data.message, "success");
     },
   });
