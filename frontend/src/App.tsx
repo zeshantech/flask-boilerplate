@@ -8,7 +8,7 @@ import { AuthContextProvider } from "./context/Auth.context";
 
 const darkTheme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
   },
 });
 
@@ -16,17 +16,17 @@ export default function App() {
   const queryClient = new QueryClient();
 
   return (
-    <BrowserRouter>
-      <SnackbarProvider>
-        <AuthContextProvider>
-          <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkTheme}>
+      <BrowserRouter>
+        <SnackbarProvider>
+          <AuthContextProvider>
             <CssBaseline />
             <QueryClientProvider client={queryClient}>
-              <Routes></Routes>;
+              <Routes />
             </QueryClientProvider>
-          </ThemeProvider>
-        </AuthContextProvider>
-      </SnackbarProvider>
-    </BrowserRouter>
+          </AuthContextProvider>
+        </SnackbarProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

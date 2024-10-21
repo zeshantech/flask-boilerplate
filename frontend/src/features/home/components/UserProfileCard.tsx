@@ -1,23 +1,14 @@
 import { Card, CardContent, Avatar, Typography, Alert, CircularProgress, styled, Stack, Box, IconButton } from "@mui/material";
-import { Logout, Refresh } from "@mui/icons-material";
+import { Refresh } from "@mui/icons-material";
 import { useGetUser } from "../hooks/query.hooks";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useAuth } from "../../../context/Auth.context";
 
 export default function UserDataCard() {
-  const navigate = useNavigate();
-  const { handleOnLogout } = useAuth();
   const { data: user, isLoading, isFetching, isError, refetch } = useGetUser();
 
   useEffect(() => {
     refetch();
   }, []);
-
-  const handleLogout = () => {
-    handleOnLogout();
-    navigate("/auth/login");
-  };
 
   if (isLoading || isFetching) {
     return <CircularProgress />;
@@ -30,13 +21,9 @@ export default function UserDataCard() {
   return (
     <Card sx={{ width: 400 }}>
       <CardContent component={Stack} alignItems={"center"}>
-        {/* Icons for Logout and Refresh */}
-        <Stack direction="row" justifyContent="flex-end" width="100%">
+        <Stack  alignItems="flex-end" width="100%">
           <IconButton size="small" onClick={() => refetch()}>
             <Refresh fontSize="inherit" />
-          </IconButton>
-          <IconButton size="small" onClick={handleLogout}>
-            <Logout fontSize="inherit" />
           </IconButton>
         </Stack>
         <AvatarContainer>

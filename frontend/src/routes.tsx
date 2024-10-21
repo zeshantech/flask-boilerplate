@@ -3,6 +3,7 @@ import { useAuth } from "./context/Auth.context";
 import { DashboardPage } from "./features/home/pages";
 import { LoginPage, ForgotPasswordPage, RegisterationPage, ResetPasswordPage, VerifyResetPasswordOtpPage } from "./features/auth/pages";
 import NotFoundPage from "./features/404/NotFound.page";
+import Appbar from "./layout/Appbar";
 
 export default function MainRoutes() {
   const { isAuthenticated } = useAuth();
@@ -13,8 +14,10 @@ export default function MainRoutes() {
 function AuthenticatedRoutes() {
   return (
     <Routes>
-      <Route path="/dashboard" Component={DashboardPage} />
-      <Route path="*" Component={NotFoundPage} />
+      <Route element={[<Appbar />]}>
+        <Route path="/dashboard" Component={DashboardPage} />
+        <Route path="*" Component={NotFoundPage} />
+      </Route>
     </Routes>
   );
 }

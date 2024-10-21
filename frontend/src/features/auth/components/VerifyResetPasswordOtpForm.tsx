@@ -46,13 +46,9 @@ export default function VerifyResetPasswordOtpForm({ onSubmit, isResending, isLo
       </Form>
       <Typography variant="body2" mt={2} textAlign="end">
         Didn't receive OTP?{" "}
-        {isResending ? (
-          <CircularProgress />
-        ) : (
-          <Box component="span" sx={{ cursor: "pointer", color: "primary.main" }} onClick={onResend}>
-            Resend OTP
-          </Box>
-        )}
+        <Box component="span" sx={{ cursor: "pointer", color: isResending ? "grey.500" : "primary.main", pointerEvents: isResending ? "none" : "auto", }} onClick={onResend}>
+          Resend OTP
+        </Box>
       </Typography>
       <Divider sx={{ my: 2 }} />
       <Typography variant="body2" textAlign="center">
