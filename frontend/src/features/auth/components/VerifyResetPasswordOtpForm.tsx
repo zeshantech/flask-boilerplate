@@ -1,6 +1,6 @@
 // src/components/VerifyResetPasswordOtpForm.tsx
 
-import { CssBaseline, Stack, Paper, Typography, Divider, Box, CircularProgress } from "@mui/material";
+import { CssBaseline, Stack, Paper, Typography, Divider, Box } from "@mui/material";
 import Button from "../../../components/Button";
 import { Form, TextField } from "../../../components/Form";
 import * as yup from "yup";

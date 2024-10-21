@@ -1,5 +1,6 @@
-import { AppBar, Toolbar, Typography, IconButton, useColorScheme, Stack, Box } from "@mui/material";
-import React, { Fragment, useState } from "react";
+import { AppBar, Toolbar, Typography, IconButton, Stack } from "@mui/material";
+import { useColorScheme } from "@mui/material/styles";
+import { Fragment } from "react";
 import { useGetUser } from "../features/home/hooks/query.hooks";
 import Button from "../components/Button";
 import { useAuth } from "../context/Auth.context";
@@ -27,7 +28,7 @@ export default function Appbar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {data?.first_name ?? "Your"} Dashboard
+            {data?.first_name ? data?.first_name + "'s" : "Your"} Dashboard
           </Typography>
 
           <Stack gap={2} direction={"row"}>
