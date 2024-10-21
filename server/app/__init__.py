@@ -15,7 +15,7 @@ def create_app():
     app.config.from_object(Config)
     
     # Initialize extensions
-    CORS(app, resources={r"/api/*": {"origins": "*"}}) 
+    CORS(app, resources={r"/api/*": {"origins": app.config["CORS_ALLOWED_ORIGINS"].split(',')}})
     db.init_app(app)
     jwt.init_app(app)
     migrate.init_app(app, db)
